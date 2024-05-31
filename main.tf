@@ -1,10 +1,10 @@
 resource "azurerm_resource_group" "res-01" {
-  name     = "jwe-receipt-tracker"
+  name     = "jwereceipttracker"
   location = var.location
 }
 
 resource "azurerm_container_registry" "acr" {
-  name                = "receipt-tracker-register"
+  name                = "receipttrackerregister"
   resource_group_name = azurerm_resource_group.res-01.name
   location            = var.location
   sku                 = "Basic"
@@ -12,7 +12,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_storage_account" "res-01" {
-  name                     = "receipt-tracker-storage-account"
+  name                     = "receipttrackerstorageaccount"
   resource_group_name      = azurerm_resource_group.res-01.name
   location                 = azurerm_resource_group.res-01.location
   account_tier             = "Standard"
@@ -20,7 +20,7 @@ resource "azurerm_storage_account" "res-01" {
 }
 
 resource "azurerm_storage_container" "res-01" {
-  name                  = "receipt-tracker-tfstate"
+  name                  = "receipttrackertfstate"
   storage_account_name  = azurerm_storage_account.res-01.name
   container_access_type = "private"
 }
