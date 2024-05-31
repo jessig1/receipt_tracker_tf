@@ -12,7 +12,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 resource "azurerm_storage_account" "res-01" {
-  name                     = "receipttrackerstorageaccount"
+  name                     = "receipttrackersa"
   resource_group_name      = azurerm_resource_group.res-01.name
   location                 = azurerm_resource_group.res-01.location
   account_tier             = "Standard"
