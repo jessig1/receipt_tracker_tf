@@ -43,5 +43,7 @@ resource "azurerm_linux_web_app" "res-01" {
   location            = var.location
   service_plan_id     = azurerm_service_plan.res-01.id
 
-  site_config {}
+  site_config {
+    always_on = false
+  }
 }
