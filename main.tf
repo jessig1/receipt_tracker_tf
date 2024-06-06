@@ -3,6 +3,20 @@ resource "azurerm_resource_group" "res-01" {
   location = var.location
 }
 
+resource "azurerm_storage_account" "res-01" {
+  name                     = "receipttrackersa"
+  resource_group_name      = azurerm_resource_group.res-01.name
+  location                 = var.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+
+resource "azurerm_storage_container" "res-01" {
+  name                  = "receipts"
+  storage_account_name  = azurerm_storage_account.res-01.name
+  container_access_type = "private"
+}
+
 resource "azurerm_container_registry" "acr" {
   depends_on = [
     azurerm_resource_group.res-01
