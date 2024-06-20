@@ -52,6 +52,18 @@ resource "azurerm_linux_web_app" "res-01" {
   }
 }
 
+resource "azurerm_linux_function_app" "res-01" {
+  name                = "receipt analysis"
+  resource_group_name = azurerm_resource_group.res-01.name
+  location            = azurerm_resource_group.res-01.location
+
+  storage_account_name       = azurerm_storage_account.res-01.name
+  storage_account_access_key = azurerm_storage_account.res-01.primary_access_key
+  service_plan_id            = azurerm_service_plan.res-01.id
+
+  site_config {}
+}
+
 resource "azurerm_cognitive_account" "res-01" {
   name                = "rtcognitive"
   location            = azurerm_resource_group.res-01.location
